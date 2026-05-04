@@ -28,6 +28,8 @@ This repository implements a zero-operating-cost, edge-native compliance layer u
 ### Installation
 1.  Clone the repository.
 2.  Deploy the Hook in `hooks/guard.c` to your XRPL account.
+    - **Option A (Docker)**: Run `.\hooks\build.ps1` (Requires Docker Desktop).
+    - **Option B (Zero-Install)**: Run `node hooks/cloud_build.js` (Uses Online Compiler API).
 3.  Deploy the dashboard in `dashboard/` to Cloudflare Workers.
 
 ## 📜 License

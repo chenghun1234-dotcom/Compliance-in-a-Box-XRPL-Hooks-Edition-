@@ -1,5 +1,4 @@
 # Build artifacts
-hooks/*.wasm
 hooks/*.o
 
 # Environment
