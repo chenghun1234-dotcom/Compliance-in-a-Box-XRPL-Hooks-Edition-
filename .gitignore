@@ -1,0 +1,15 @@
+# Build artifacts
+hooks/*.wasm
+hooks/*.o
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

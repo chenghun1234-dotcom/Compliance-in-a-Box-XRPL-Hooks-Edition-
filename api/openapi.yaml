@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Compliance-in-a-Box API (RCaaS)
+  description: Defense-grade Regulatory Compliance as a Service for XRPL-based assets.
+  version: 1.0.0
+servers:
+  - url: https://compliance.trustededge.network
+    description: Production Edge Node
+
+paths:
+  /v1/kill-switch:
+    get:
+      summary: Get current Kill Switch status
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  active:
+                    type: boolean
+                  last_updated:
+                    type: string
+                    format: date-time
+    post:
+      summary: Toggle Global Kill Switch
+      security:
+        - AdminKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active:
+                  type: boolean
+      responses:
+        '200':
+          description: Status updated
+        '403':
+          description: Unauthorized
+
+  /v1/whitelist:
+    get:
+      summary: List all authorized addresses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    post:
+      summary: Authorize a new address
+      security:
+        - AdminKey: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+      responses:
+        '201':
+          description: Address authorized
+        '400':
+          description: Invalid XRPL address
+
+  /v1/audit/parity:
+    get:
+      summary: Check BTC/Stablecoin parity status
+      description: Real-time parity check between Bitcoin reserves and Stablecoin issuance.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parity_ratio:
+                    type: number
+                  is_solvent:
+                    type: boolean
+                  btc_reserve_sats:
+                    type: integer
+                  stablecoin_issuance:
+                    type: number
+
+components:
+  securitySchemes:
+    AdminKey:
+      type: apiKey
+      in: header
+      name: X-Admin-Key
