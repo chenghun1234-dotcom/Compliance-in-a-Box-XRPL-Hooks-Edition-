@@ -1,6 +1,8 @@
 // Dashboard Logic
+const LIVE_HOOK_ADDRESS = "rQpe7NoDYJW8ZEy5sJJ411PqxAg7HnESZe"; // 실시간 배포된 훅 주소
 let isLockedDown = false;
 const whitelist = [
+    LIVE_HOOK_ADDRESS,
     "rP173yDoz2XnN9nCCT9H2L9pE3N3pU1i6r",
     "rHB9CJAWyB4rj91VRv7mX9e29aKx2h87E"
 ];

@@ -10,11 +10,11 @@ const xrpl = require('xrpl');
 
 // Configuration
 const CONFIG = {
-    BTC_ADDRESS: 'bc1q...your_reserve_address', // 비트코인 비축 주소
-    XRPL_ISSUER: 'r...your_stablecoin_issuer', // 스테이블코인 발행 계정
-    XRPL_NODE: 'wss://xahau.network', // Hooks 지원 네트워크 (Xahau 등)
-    CHECK_INTERVAL_MS: 60000, // 1분마다 체크
-    THRESHOLD: 0.99 // 99% 미만일 경우 즉시 차단
+    BTC_ADDRESS: 'bc1q0sr96uux5h2jve9f53e6q3q6q3q6q3q6q3q6q3', // 비트코인 비축 샘플 주소
+    XRPL_ISSUER: 'rQpe7NoDYJW8ZEy5sJJ411PqxAg7HnESZe', // 실시간 배포된 훅 주소
+    XRPL_NODE: 'wss://xahau-test.net', // Xahau 테스트넷
+    CHECK_INTERVAL_MS: 60000, 
+    THRESHOLD: 0.99 
 };
 
 async function getBTCBalance(address) {
